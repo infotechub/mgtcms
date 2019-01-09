@@ -1,0 +1,57 @@
+﻿@model IEnumerable<NCMS.Models.Log>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Action)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActionDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Page)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActiontakenBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActionDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Action)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActionDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Page)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActiontakenBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActionDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.LogId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.LogId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.LogId })
+        </td>
+    </tr>
+}
+
+</table>

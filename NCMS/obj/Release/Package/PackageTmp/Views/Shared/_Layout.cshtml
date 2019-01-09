@@ -1,0 +1,158 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - NCMS</title>
+
+    <link href="~/Content/css/responsiveslides.css" rel="stylesheet" />
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="icon" href="~/favicon.ico" type="image/gif" sizes="16x16">
+
+
+
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
+    <link href="~/Content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/vendor/fontawesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/vendor/themify-icons/themify-icons.min.css" rel="stylesheet" />
+    <link href="~/Content/vendor/animate.css/animate.min.css" rel="stylesheet" />
+    <link href="~/Content/vendor/perfect-scrollbar/perfect-scrollbar.min.css" rel="stylesheet" />
+    <link href="~/Content/vendor/switchery/switchery.min.css" rel="stylesheet" media="screen" />
+    <link href="~/Content/vendor/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet" media="screen" />
+    <link href="~/Content/vendor/select2/select2.min.css" rel="stylesheet" media="screen" />
+    <link href="~/Content/vendor/bootstrap-datepicker/bootstrap-datepicker3.standalone.min.css" rel="stylesheet" media="screen" />
+    <link href="~/Content/vendor/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet" media="screen" />
+    <link href="~/Content/assets/css/styles.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/plugins.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/themes/theme-1.css" rel="stylesheet" id="skin_color" />
+
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+    <script src="~/Scripts/js/responsiveslides.min.js"></script>
+    <style>
+        th {
+            background-color: #0094ff;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+
+        }
+       
+    </style>
+    <script>
+        function startTime() {
+            var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            m = checkTime(m);
+            s = checkTime(s);
+            document.getElementById('txt').innerHTML =
+                h + ":" + m + ":" + s;
+            var t = setTimeout(startTime, 500);
+        }
+        function checkTime(i) {
+            if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
+            return i;
+        }
+    </script>
+</head>
+
+<body onload="startTime()">
+
+
+
+
+
+    @RenderBody()
+
+
+    <div class="clear"> </div>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="pull-left">
+                <script language='JavaScript' type='text/javascript'>
+<!--
+                    function y2k(number) { return (number < 1000) ? number + 1900 : number; }
+                    var today = new Date();
+                    var year = y2k(today.getYear());
+                    document.write('&copy; ' + year + ' Novo Health Africa - All Rights Reserved');
+                    //--> </script>
+            </div>
+            <div class="pull-right">
+                <span class="go-top"><i class="ti-angle-up"></i></span>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+    <div class="loaderbody" id="loaderbody">
+        <div class="loader"></div>
+    </div>
+
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+    <script>
+        $(function () {
+            $("#loaderbody").addClass('hide');
+            $(document).bind('ajaxStart', function () {
+                $("#loaderbody").removeClass('hide');
+            }).bind('ajaxStop', function () {
+                $("#loaderbody").addClass('hide');
+            });
+        });
+
+
+    </script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+
+
+
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+

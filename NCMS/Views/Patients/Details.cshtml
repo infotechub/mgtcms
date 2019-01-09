@@ -1,0 +1,741 @@
+﻿@model NCMS.Models.Patient
+
+@{
+    ViewBag.Title = "Details";
+}
+<div id="app">
+    <div class="sidebar app-aside" id="sidebar">
+        <div class="sidebar-container perfect-scrollbar">
+
+            <nav>
+
+                <!-- start: MAIN NAVIGATION MENU -->
+                <div class="navbar-title">
+                    <span>Main Navigation</span>
+                </div>
+                <ul class="main-navigation-menu">
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Admin"))
+                        {
+                            <li>
+                                <a href="~/Dashboard">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-university"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Dashboard </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/Users">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-users" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Registered Users </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/Patients">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-bed" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Patients </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/Appointments">
+
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-hospital-o" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Appointments </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/Prescriptions">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-medkit" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Drug Prescription </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li>
+
+                                <a href="~/Schedules">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-calendar" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Doctor's Schedule </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+
+                                <a href="~/Timesheet">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-calendar" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Employees Timesheet </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        }
+
+                        else if (User.IsInRole("Front Desk"))
+                        {
+                            <li>
+                                <a href="~/Dashboard">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-university"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Dashboard </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/Patients">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-bed" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Patients </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/Appointments">
+
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-hospital-o" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Appointments </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+
+                                <a href="~/Timesheet">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-calendar" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Employees Timesheet </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+
+
+                        }
+
+                        else if (User.IsInRole("Nurse"))
+                        {
+                            <li>
+                                <a href="~/Dashboard">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-university"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Dashboard </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/RequestDrugs">
+
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-bed" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Order Drugs </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/Patients">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-bed" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Patients </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/Patients">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-bed" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Patients </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="~/Appointments">
+
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-hospital-o" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Appointments </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/Prescriptions">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-medkit" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Drug Prescription </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li>
+
+                                <a href="~/Schedules">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-calendar" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Doctor's Schedule </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+
+                                <a href="~/Timesheet">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-calendar" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Employees Timesheet </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        }
+
+
+                        else if (User.IsInRole("Doctor"))
+                        {
+                            <li>
+                                <a href="~/Dashboard">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-university"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Dashboard </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="~/Appointments">
+
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-hospital-o" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Appointments </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/Prescriptions">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-medkit" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Drug Prescription </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li>
+
+                                <a href="~/Schedules">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-calendar" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Doctor's Schedule </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+
+                                <a href="~/Timesheet">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-calendar" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Employees Timesheet </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        }
+
+                        else if (User.IsInRole("Pharmacist"))
+                        {
+                            <li>
+                                <a href="~/Dashboard">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-university"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Dashboard </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="~/Appointments">
+
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-hospital-o" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Appointments </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/Prescriptions">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-medkit" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Drug Prescription </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li>
+
+                                <a href="~/Schedules">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-calendar" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Doctor's Schedule </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+
+                                <a href="~/Timesheet">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-calendar" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Employees Timesheet </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        }
+
+                        else if (User.IsInRole("Patient"))
+                        {
+                            <li>
+                                <a href="~/Dashboard">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-university"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Dashboard </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="~/Appointments">
+
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-hospital-o" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Appointments </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/Prescriptions">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-medkit" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Drug Prescription </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li>
+
+                                <a href="~/Schedules">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-calendar" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Doctor's Schedule </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <h2>Error 403:</h2>
+                            <p>Access Denied!</p>
+
+                        }
+                    }
+
+
+                </ul>
+                <!-- end: CORE FEATURES -->
+
+            </nav>
+        </div>
+    </div>
+    <div class="app-content">
+        <!--start-wrap-->
+        <header class="navbar navbar-default navbar-static-top">
+            <!-- start: NAVBAR HEADER -->
+            <div class="navbar-header">
+                <a href="#" class="sidebar-mobile-toggler pull-left hidden-md hidden-lg" class="btn btn-navbar sidebar-toggle" data-toggle-class="app-slide-off" data-toggle-target="#app" data-toggle-click-outside="#sidebar">
+                    <i class="ti-align-justify"></i>
+                </a>
+                <a class="navbar-brand" href="#">
+                    <h2 style="padding-top:2% ">  <img src="~/Content/images/logo.png" /></h2>
+                </a>
+                <a href="#" class="sidebar-toggler pull-right visible-md visible-lg" data-toggle-class="app-sidebar-closed" data-toggle-target="#app">
+                    <i class="ti-align-justify"></i>
+                </a>
+                <a class="pull-right menu-toggler visible-xs-block" id="menu-toggler" data-toggle="collapse" href=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <i class="ti-view-grid"></i>
+                </a>
+            </div>
+            <!-- end: NAVBAR HEADER -->
+            <!-- start: NAVBAR COLLAPSE -->
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-right">
+                    <!-- start: MESSAGES DROPDOWN -->
+                    <li style="padding-top:2% ">
+                        <h2>Novo Clinic Management System</h2>
+                    </li>
+                    <li class="dropdown current-user">
+                        <a href class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="~/Content/assets/images/default-user.png" alt="user avatar"> <span class="username">
+
+                                @using Microsoft.AspNet.Identity
+                                @if (Request.IsAuthenticated)
+                                {
+                                    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+
+                                        <ul class="nav navbar-nav navbar-right">
+                                            <li><a href="javascript:document.getElementById('logoutForm').submit()"> <i class="fa fa-sign-out" style="font-size:20px;"></i>Log Out</a></li>
+                                        </ul>
+                                    }
+                                }
+
+
+
+                            </span>
+                        </a>
+
+                    </li>
+
+                    <!-- end: USER OPTIONS DROPDOWN -->
+                </ul>
+                <!-- end: USER OPTIONS DROPDOWN -->
+                </ul>
+                <!-- start: MENU TOGGLER FOR MOBILE DEVICES -->
+                <div class="close-handle visible-xs-block menu-toggler" data-toggle="collapse" href=".navbar-collapse">
+                    <div class="arrow-left"></div>
+                    <div class="arrow-right"></div>
+                </div>
+                <!-- end: MENU TOGGLER FOR MOBILE DEVICES -->
+            </div>
+
+
+            <!-- end: NAVBAR COLLAPSE -->
+        </header>
+        <div class="main-content">
+            <div class="wrap-content container" id="container">
+                <!-- start: PAGE TITLE -->
+                <section id="page-title">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <h1 class="mainTitle">Patient Details</h1>
+                        </div>
+                        <ol class="breadcrumb">
+                            <li>
+                                @Html.ActionLink("WELCOME  " + User.Identity.GetUserName() + " !", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                            </li>
+                        </ol>
+                    </div>
+                </section>
+                <div class="container-fluid container-fullw bg-white">
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            if (User.IsInRole("Admin") || User.IsInRole("Front Desk") || User.IsInRole("Patient"))
+                            {
+                        <div class="col-md-6">
+
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tr>
+                                        <font size="5">
+                                            Details
+                                        </font>
+                                        <hr />
+                                        <td>
+
+
+                                            <b> <font size="3">  @Html.DisplayNameFor(model => model.FullName) </font></b>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.FullName)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b> <font size="3">    @Html.DisplayNameFor(model => model.Dob) </font></b>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Dob)
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <b> <font size="3">    @Html.DisplayNameFor(model => model.PolicyNumber) </font></b>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.PolicyNumber)
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>
+                                            <b> <font size="3">    @Html.DisplayNameFor(model => model.Maritalstatus) </font></b>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Maritalstatus)
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>
+                                            <b> <font size="3">    @Html.DisplayNameFor(model => model.Occupation) </font></b>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Occupation)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b> <font size="3">    @Html.DisplayNameFor(model => model.Sex) </font></b>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Sex)
+                                        </td>
+                                    </tr>
+
+
+
+                                    <tr>
+                                        <td>
+                                            <b> <font size="3">    @Html.DisplayNameFor(model => model.HasProfile) </font></b>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.HasProfile)
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>
+                                            <b> <font size="3">    @Html.DisplayNameFor(model => model.Profileid) </font></b>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Profileid)
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <b> <font size="3">    @Html.DisplayNameFor(model => model.StaffId) </font></b>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.StaffId)
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>
+                                            <b> <font size="3">    @Html.DisplayNameFor(model => model.Mobilenumber) </font></b>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Mobilenumber)
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <b> <font size="3">    @Html.DisplayNameFor(model => model.Emailaddress) </font></b>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Emailaddress)
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>
+                                            <b> <font size="3">    @Html.DisplayNameFor(model => model.NewStaffId) </font></b>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.NewStaffId)
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <b> <font size="3">    @Html.DisplayNameFor(model => model.CreatedOn) </font></b>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.CreatedOn)
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <b> <font size="3">    @Html.DisplayNameFor(model => model.UpdatedOn) </font></b>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.UpdatedOn)
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            </div>
+                                
+</div>
+
+                        }
+                        else
+                        {
+                            <h2>Error 403:</h2>
+                            <p>Access Denied!</p>
+                        }
+                    }
+                    else
+                    {
+                        <h2>Access Denied!</h2>
+
+
+                    }
+                        <div class="col-md-3"></div>
+                        <p>
+
+                            @Html.ActionLink("Back to List", "Index")
+                        </p>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
