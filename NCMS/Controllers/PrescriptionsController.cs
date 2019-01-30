@@ -26,6 +26,7 @@ namespace NCMS.Controllers
             //return View(db.Pharmacists.ToList());
         }
 
+        
         // GET: Prescriptions/Details/5
         public ActionResult Details(int? id)
         {

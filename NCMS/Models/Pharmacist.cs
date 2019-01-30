@@ -57,10 +57,10 @@ namespace NCMS.Models
         public Double DispensedDrugs { get; set; }
         [DisplayName("Undispensed Drugs")]
         public Double RemainingDrugs { get; set; }
-        [DataType(DataType.DateTime)]
-        [DisplayName("Drugs Uploaded On")]
-        public DateTime UploadedDate { get; set; }
-        [DisplayName("Drugs Uploaded By")]
+       
+        [DisplayName("Dispensed On")]
+        public DateTime UploadedDate { get { return _createdon; } set { _createdon = value; } }
+        [DisplayName("Dispensed By")]
         public DateTime UploadedBy { get; set; }
         [DisplayName("Reviewed By")]
         public string ReviewedBy { get; set; }
@@ -71,7 +71,7 @@ namespace NCMS.Models
         public string Date { get; set; }
 
         public DateTime _createdon = DateTime.Now;
-        [DisplayName("Ceated On")]
+        [DisplayName("Created On")]
         public DateTime CreatedOn { get { return _createdon; } set { _createdon = value; } }
 
 

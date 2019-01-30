@@ -428,14 +428,14 @@
                             </li>
 
                             <li>
-                                <a href="~/Appointments">
+                                <a href="~/RequestDrugs">
 
                                     <div class="item-content">
                                         <div class="item-media">
                                             <i class="fa fa-hospital-o" icon></i>
                                         </div>
                                         <div class="item-inner">
-                                            <span class="title"> Appointments </span>
+                                            <span class="title"> Dispense Drugs </span>
                                         </div>
                                     </div>
                                 </a>
@@ -447,25 +447,13 @@
                                             <i class="fa fa-medkit" icon></i>
                                         </div>
                                         <div class="item-inner">
-                                            <span class="title"> Drug Prescription </span>
+                                            <span class="title"> Drugs Inventory </span>
                                         </div>
                                     </div>
                                 </a>
                             </li>
 
-                            <li>
-
-                                <a href="~/Schedules">
-                                    <div class="item-content">
-                                        <div class="item-media">
-                                            <i class="fa fa-calendar" icon></i>
-                                        </div>
-                                        <div class="item-inner">
-                                            <span class="title"> Doctor's Schedule </span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
+                           
                         }
 
                         else
@@ -591,7 +579,7 @@
 
                                 
 
-                                <div id="txt" align="right" style="color:green; font-size:30px;"></div>
+                                
                                 <div class="col-sm-4">
 
                                     <div class="panel panel-white no-radius text-center">
@@ -651,8 +639,7 @@
                         else if (User.IsInRole("Front Desk"))
                         {
                             <div class="row">
-                                <div id="txt" align="right" style="color:green; font-size:30px;"></div>
-
+                                
                                 <div class="col-sm-4">
                                     <div class="panel panel-white no-radius text-center">
                                         <div class="panel-body">
@@ -707,7 +694,7 @@
                         else if (User.IsInRole("Nurse") || User.IsInRole("Doctor") || User.IsInRole("Pharmacist"))
                         {
                             <div class="row">
-                                <div id="txt" align="right" style="color:green; font-size:30px;"></div>
+                                
 
                                 <div class="col-sm-4">
                                     <div class="panel panel-white no-radius text-center">
@@ -779,11 +766,11 @@
                                     <div class="panel panel-white no-radius text-center">
                                         <div class="panel-body">
                                             <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i>   <i class="fa fa-medkit" icon></i></span>
-                                            <h2 class="StepTitle">Drugs Prescription</h2>
+                                            <h2 class="StepTitle">Drugs Inventory</h2>
 
                                             <p class="cl-effect-1">
                                                 <a href="~/Prescriptions/">
-                                                    Prescribe Drugs
+                                                    View Drugs Inventory
                                                 </a>
                                             </p>
                                         </div>
@@ -793,11 +780,11 @@
                                     <div class="panel panel-white no-radius text-center">
                                         <div class="panel-body">
                                             <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-hospital-o" icon></i></span>
-                                            <h2 class="StepTitle"> Appointments</h2>
+                                            <h2 class="StepTitle"> Dispense Drugs</h2>
 
                                             <p class="links cl-effect-1">
                                                 <a href="~/Appointments/">
-                                                    View Or Add Appointment
+                                                    Dispense Drugs To Clinics
                                                 </a>
                                             </p>
                                         </div>

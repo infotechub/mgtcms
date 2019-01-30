@@ -35,4 +35,18 @@ namespace NCMS.Models
         DrugAdmin
 
     }
+
+    public enum DrugStatus
+
+    {
+        Dispensed,
+        Delivered,
+        InTransit,
+        Pending,
+        Rejected
+        
+
+
+    }
+
 }

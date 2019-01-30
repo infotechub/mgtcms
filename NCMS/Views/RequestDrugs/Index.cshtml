@@ -974,14 +974,14 @@
                             </li>
 
                             <li>
-                                <a href="~/Appointments">
+                                <a href="~/RequestDrugs">
 
                                     <div class="item-content">
                                         <div class="item-media">
                                             <i class="fa fa-hospital-o" icon></i>
                                         </div>
                                         <div class="item-inner">
-                                            <span class="title"> Appointments </span>
+                                            <span class="title"> Order Drugs </span>
                                         </div>
                                     </div>
                                 </a>
@@ -993,25 +993,13 @@
                                             <i class="fa fa-medkit" icon></i>
                                         </div>
                                         <div class="item-inner">
-                                            <span class="title"> Drug Prescription </span>
+                                            <span class="title"> Drugs Inventory </span>
                                         </div>
                                     </div>
                                 </a>
                             </li>
 
-                            <li>
-
-                                <a href="~/Schedules">
-                                    <div class="item-content">
-                                        <div class="item-media">
-                                            <i class="fa fa-calendar" icon></i>
-                                        </div>
-                                        <div class="item-inner">
-                                            <span class="title"> Doctor's Schedule </span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
+                           
                         }
 
                         else
@@ -1139,178 +1127,213 @@
                                     @if (User.IsInRole("Patient") || User.IsInRole("Pharmacist") || User.IsInRole("Nurse"))
                                     {
 
-                                        <table class="table table-bordered">
-
-                                            <div class="col-md-6">
-                                                <button type="submit" class='btn btn-primary'><i class="fa fa-plus fa-lg"><a href="~/RequestDrugs/Create"><font color="white"> Order Drugs</font></a></i></button>
-                                            </div>
-
-                                            <div class="col-md-3"></div>
-
-                                            <div class="col-md-6">
-
-
-                                                <form action="/Appointments" method="get">
-                                                    &nbsp;&nbsp;&nbsp;Search Appointments List
-                                                    <div class="form-group">
-                                                        <div class=" col-md-6">
-
-                                                            <input id="search" name="search" type="text" value="" placeholder="Generic Name " required /><br />
-
-                                                        </div>
-                                                    </div><br />
-                                                  
-                                                    <div class="form-group">
-                                                        <div class=" col-md-2">
-                                                            <input type="submit" class="btn btn-primary" value="Search" />
-                                                        </div>
-                                                    </div><br /><br />
-
-
-                                                </form>
-
-
-
-
-                                            </div>
-                                            <br />
-                                            <br />
-
-                                            <thead class="table-heading">
-                                                <tr>
-
-                                                    <td>
-                                                        <b>
-                                                            <font size="4">
-                                                                @Html.DisplayNameFor(model => model.First().RequestID)
-                                                            </font>
-                                                        </b>
-                                                    </td>
-
-
-                                                    <td>
-                                                        <b>
-                                                            <font size="4">
-                                                                @Html.DisplayNameFor(model => model.First().BrandName)
-                                                            </font>
-                                                        </b>
-                                                    </td>
-
-
-                                                    <td>
-                                                        <b>
-                                                            <font size="4">
-                                                                @Html.DisplayNameFor(model => model.First().GenericName)
-                                                            </font>
-                                                        </b>
-                                                    </td>
-
-                                                    <td>
-                                                        <b>
-                                                            <font size="4">
-                                                                @Html.DisplayNameFor(model => model.First().Quantity)
-                                                            </font>
-                                                        </b>
-                                                    </td>
-
-
-                                                    <td>
-                                                        <b>
-                                                            <font size="4">
-                                                                @Html.DisplayNameFor(model => model.First().Description)
-                                                            </font>
-                                                        </b>
-                                                    </td>
-
-
-                                                    <td>
-                                                        <b>
-                                                            <font size="4">
-                                                                @Html.DisplayNameFor(model => model.First().RequestBy)
-                                                            </font>
-                                                        </b>
-                                                    </td>
-
-
-                                                    <td>
-                                                        <b>
-                                                            <font size="4">
-                                                                @Html.DisplayNameFor(model => model.First().ReviewedBy)
-                                                            </font>
-                                                        </b>
-                                                    </td>
-
-
-                                                    <td>
-                                                        <b>
-                                                            <font size="4">
-                                                                @Html.DisplayNameFor(model => model.First().Comment)
-                                                            </font>
-                                                        </b>
-                                                    </td>
-
-
-                                                    <td>
-                                                        <b>
-                                                            <font size="4">
-                                                                @Html.DisplayNameFor(model => model.First().RequestDate)
-                                                            </font>
-                                                        </b>
-                                                    </td>
-                                                    <td>
-                                                        <b>
-                                                            <font size="4">Actions </font>
-                                                        </b>
-                                                    </td>
-                                                </tr>
-                                            </thead>
-                                            @if (Model.Count() == 0)
+                                    <table class="table table-bordered">
+                                        
+                                        <div class="col-md-6">
+                                            @if (User.IsInRole("Pharmacist") || User.IsInRole("Nurse"))
                                             {
-                                                <tr>
-                                                    <td colspan="12"> Records not found </td>
-                                                </tr>
+                                            <button type="submit" class='btn btn-primary'><i class="fa fa-plus fa-lg"><a href="~/RequestDrugs/Create"><font color="white"> Order Drugs</font></a></i></button>
+
                                             }
                                             else
                                             {
-                                                foreach (var item in Model)
-                                                {
-                                                <tr>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.RequestID)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.BrandName)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.GenericName)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.Quantity)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.Description)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.RequestBy)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.ReviewedBy)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.Comment)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.RequestDate)
-                                                    </td>
-                                                    <td>
-
-                                                        <a href="~/RequestDrugs/Edit/@item.RequestID"><i class="fa fa-edit" style="font-size:28px;color:dodgerblue"></i></a> 
-                                                       
-                                                </tr>
-                                                }
+                                                <p>Dispense Drugs to Clinics</p>
                                             }
+                                        </div>
 
-                                        </table>
+                                        <div class="col-md-3"></div>
+
+                                        <div class="col-md-6">
+
+
+                                            <form action="/Appointments" method="get">
+                                                &nbsp;&nbsp;&nbsp;Search Drugs List
+                                                <div class="form-group">
+                                                    <div class=" col-md-6">
+
+                                                        <input id="search" name="search" type="text" value="" placeholder="Generic Name " required /><br />
+
+                                                    </div>
+                                                </div><br />
+
+                                                <div class="form-group">
+                                                    <div class=" col-md-2">
+                                                        <input type="submit" class="btn btn-primary" value="Search" />
+                                                    </div>
+                                                </div><br /><br />
+
+
+                                            </form>
+
+
+
+
+                                        </div>
+                                        <br />
+                                        <br />
+
+                                        <thead class="table-heading">
+                                            <tr>
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.First().RequestID)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.First().BrandName)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.First().GenericName)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.First().QuantityReq)
+                                                        </font>
+                                                    </b>
+                                                </td>
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.First().DispensedQuantity)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.First().Description)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.First().RequestBy)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.First().ReviewedBy)
+                                                        </font>
+                                                    </b>
+                                                </td>
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.First().DrugStatus)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.First().Comment)
+                                                        </font>
+                                                    </b>
+                                                </td>
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.First().DispensedDate)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.First().RequestDate)
+                                                        </font>
+                                                    </b>
+                                                </td>
+                                                <td>
+                                                    <b>
+                                                        <font size="4">Actions </font>
+                                                    </b>
+                                                </td>
+                                            </tr>
+                                        </thead>
+                                        @if (Model.Count() == 0)
+                                        {
+                                            <tr>
+                                                <td colspan="12"> Records not found </td>
+                                            </tr>
+                                        }
+                                        else
+                                        {
+                                            foreach (var item in Model)
+                                            {
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.RequestID)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.BrandName)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.GenericName)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.QuantityReq)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.DispensedQuantity)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Description)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.RequestBy)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.ReviewedBy)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.DrugStatus)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Comment)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.RequestDate)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.DispensedDate)
+                                                </td>
+                                                <td>
+
+                                                    <a href="~/RequestDrugs/Edit/@item.RequestID"><i class="fa fa-edit" style="font-size:28px;color:dodgerblue"></i></a>
+
+                                            </tr>
+                                            }
+                                        }
+
+                                    </table>
                                         @Html.PagedListPager(Model,pageNumber => Url.Action("Index",new{
                                                           pageNumber
                                                           }))

@@ -966,7 +966,7 @@
                         if (User.IsInRole("Patient"))
                         {
                             <li>
-                                <a href="~/DashBoard">
+                                <a href="~/Dashboard">
                                     <div class="item-content">
                                         <div class="item-media">
                                             <i class="fa fa-university"></i>
@@ -979,14 +979,14 @@
                             </li>
 
                             <li>
-                                <a href="~/Appointments">
+                                <a href="~/RequestDrugs">
 
                                     <div class="item-content">
                                         <div class="item-media">
                                             <i class="fa fa-hospital-o" icon></i>
                                         </div>
                                         <div class="item-inner">
-                                            <span class="title"> Appointments </span>
+                                            <span class="title"> Order Drugs </span>
                                         </div>
                                     </div>
                                 </a>
@@ -998,21 +998,7 @@
                                             <i class="fa fa-medkit" icon></i>
                                         </div>
                                         <div class="item-inner">
-                                            <span class="title"> Drug Prescription </span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-
-                            <li>
-
-                                <a href="~/Schedules">
-                                    <div class="item-content">
-                                        <div class="item-media">
-                                            <i class="fa fa-calendar" icon></i>
-                                        </div>
-                                        <div class="item-inner">
-                                            <span class="title"> Doctor's Schedule </span>
+                                            <span class="title"> Drugs Inventory </span>
                                         </div>
                                     </div>
                                 </a>
@@ -1127,7 +1113,7 @@
                             <div class="form-horizontal">
                                 @if (User.Identity.IsAuthenticated)
                                 {
-                                    if (User.IsInRole("Admin") || User.IsInRole("Front Desk") || User.IsInRole("Nurse"))
+                                    if (User.IsInRole("Nurse") || User.IsInRole("Pharmacist"))
                                     {
                                         <hr />
                                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -1150,10 +1136,10 @@
                                         </div>
 
                                         <div class="form-group">
-                                            @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            @Html.LabelFor(model => model.QuantityReq, htmlAttributes: new { @class = "control-label col-md-2" })
                                             <div class="col-md-10">
-                                                @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control", @required = "" } })
-                                                @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+                                                @Html.EditorFor(model => model.QuantityReq, new { htmlAttributes = new { @class = "form-control", @required = "" } })
+                                                @Html.ValidationMessageFor(model => model.QuantityReq, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
 
@@ -1178,6 +1164,11 @@
                                         </div>
 
 
+                                    }
+                                    else
+                                    {
+                                        <h2>Error 403:</h2>
+                                        <p>Access Denied!</p>
                                     }
                                 }
                             </div>

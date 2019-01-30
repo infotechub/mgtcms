@@ -205,10 +205,10 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HistoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InventoryController.cs" />
     <Compile Include="Controllers\LogsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PatientsController.cs" />
-    <Compile Include="Controllers\Prescriptions2Controller.cs" />
     <Compile Include="Controllers\PrescriptionsController.cs" />
     <Compile Include="Controllers\RequestDrugsController.cs" />
     <Compile Include="Controllers\SchedulesController.cs" />
@@ -264,6 +264,18 @@
     <Compile Include="Migrations\201901050942240_newdb1.cs" />
     <Compile Include="Migrations\201901050942240_newdb1.Designer.cs">
       <DependentUpon>201901050942240_newdb1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901271422181_NewRwquestDrugs.cs" />
+    <Compile Include="Migrations\201901271422181_NewRwquestDrugs.Designer.cs">
+      <DependentUpon>201901271422181_NewRwquestDrugs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901271535393_OrderStatus.cs" />
+    <Compile Include="Migrations\201901271535393_OrderStatus.Designer.cs">
+      <DependentUpon>201901271535393_OrderStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901271949325_Datechanged.cs" />
+    <Compile Include="Migrations\201901271949325_Datechanged.Designer.cs">
+      <DependentUpon>201901271949325_Datechanged.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -380,6 +392,7 @@
     <Content Include="Views\History\Details.cshtml" />
     <Content Include="Views\History\Edit.cshtml" />
     <Content Include="Views\History\Index.cshtml" />
+    <Content Include="Views\Inventory\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -434,6 +447,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901050942240_newdb1.resx">
       <DependentUpon>201901050942240_newdb1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901271422181_NewRwquestDrugs.resx">
+      <DependentUpon>201901271422181_NewRwquestDrugs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901271535393_OrderStatus.resx">
+      <DependentUpon>201901271535393_OrderStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901271949325_Datechanged.resx">
+      <DependentUpon>201901271949325_Datechanged.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

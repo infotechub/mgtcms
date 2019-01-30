@@ -16,7 +16,10 @@ namespace NCMS.Models
         public string BrandName { get; set; }
         [DisplayName("Generic Name")]
         public string GenericName { get; set; }
-        public double Quantity { get; set; }
+        [DisplayName("Quantity")]
+        public double QuantityReq { get; set; }
+        [DisplayName("Quantity Dispensed")]
+        public double DispensedQuantity { get; set; }
         [DisplayName("Remark")]
         public string Description { get; set; }
         [DisplayName("Request Made By")]
@@ -27,8 +30,13 @@ namespace NCMS.Models
         public string ReviewedBy { get; set; }
         [DisplayName("Comment")]
         public string Comment { get; set; }
-        [DisplayName("Request Date")]
-        public DateTime RequestDate { get; set; }
+  
+
+        public DateTime _requestdate = DateTime.Now;
+        public DateTime RequestDate { get { return _requestdate; } set { _requestdate = value; } }
+        [DisplayName("Date Received")]
+        [DataType(DataType.Date)]
+        public DateTime ReceivedDate { get; set; }
         [DisplayName("Dispensed Date")]
         [DataType(DataType.Date)]
         public string DispensedDate { get; set; }
@@ -37,5 +45,7 @@ namespace NCMS.Models
         public string ReviewedDate { get; set; }
         [DisplayName("Remark")]
         public string ReviewedRemark { get; set; }
+        [DisplayName("Order Status")]
+        public Status DrugStatus { get; set; }
     }
 }
