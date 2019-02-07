@@ -180,18 +180,7 @@
                                     </div>
                                 </a>
                             </li>
-                            <li>
-                                <a href="~/Patients">
-                                    <div class="item-content">
-                                        <div class="item-media">
-                                            <i class="fa fa-bed" icon></i>
-                                        </div>
-                                        <div class="item-inner">
-                                            <span class="title"> Patients </span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
+
                             <li>
                                 <a href="~/Appointments">
 
@@ -201,6 +190,19 @@
                                         </div>
                                         <div class="item-inner">
                                             <span class="title"> Appointments </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/RequestDrugs">
+
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-bed" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Order Drugs </span>
                                         </div>
                                     </div>
                                 </a>
@@ -271,6 +273,19 @@
                                         </div>
                                         <div class="item-inner">
                                             <span class="title"> Appointments </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/History">
+
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-bed" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Patients History </span>
                                         </div>
                                     </div>
                                 </a>
@@ -541,6 +556,11 @@
                         </ol>
                     </div>
                 </section>
+                @{
+
+                    var CurrentUser = User.Identity.GetUserName();
+
+                }
                 <div class="container-fluid container-fullw bg-white">
                     <div class="row">
                         <div class="col-md-3"></div>
@@ -553,51 +573,131 @@
                                     {
                                         @Html.AntiForgeryToken()
 
+                                        <div class="form-horizontal">
+
+
+                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.AppointmentId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-7">
+                                                    @Html.EditorFor(model => model.AppointmentId, new { htmlAttributes = new { @class = "form-control", @required = "This is required" } })
+                                                    @Html.ValidationMessageFor(model => model.AppointmentId, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.FullName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-7">
+                                                    @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control", @required = "This is required" } })
+                                                    @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.Diagnosis, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-7">
+                                                    @Html.EditorFor(model => model.Diagnosis, new { htmlAttributes = new { @class = "form-control", @required = "This is required" } })
+                                                    @Html.ValidationMessageFor(model => model.Diagnosis, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.PrescribeDrugs, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-7">
+                                                    @Html.EditorFor(model => model.PrescribeDrugs, new { htmlAttributes = new { @class = "form-control", @required = "This is required" } })
+                                                    @Html.ValidationMessageFor(model => model.PrescribeDrugs, "You can enter multiple prescribed drugs", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+
+
+
+                                            <div class="form-group">
+                                                <div class="col-md-10">
+                                                    <input class="form-control text-box single-line" id="PrescribeBy" name="PrescribeBy" type="hidden" value="@CurrentUser" />
+                                                    <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+                                                </div>
+                                            </div>
+
+
+
+
+                                            <div class="form-group">
+                                                <div class="col-md-offset-2 col-md-5">
+                                                    <input type="submit" value="Create" class="btn btn-primary" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+
+                                </div>
+                            }
+                           else if (User.IsInRole("Patient"))
+                            {
+                                <div class="col-md-6">
+                                    @using (Html.BeginForm())
+                                    {
+                                        @Html.AntiForgeryToken()
+
                                     <div class="form-horizontal">
-                                        @{
 
-                                            var CurrentUser = User.Identity.GetUserName();
-
-                                        }
 
                                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
+
+
                                         <div class="form-group">
-                                            @Html.LabelFor(model => model.AppointmentId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            @Html.LabelFor(model => model.BrandName, htmlAttributes: new { @class = "control-label col-md-2" })
                                             <div class="col-md-7">
-                                                @Html.EditorFor(model => model.AppointmentId, new { htmlAttributes = new { @class = "form-control", @required = "This is required" } })
-                                                @Html.ValidationMessageFor(model => model.AppointmentId, "", new { @class = "text-danger" })
+                                                @Html.EditorFor(model => model.BrandName, new { htmlAttributes = new { @class = "form-control", @required = "This is required" } })
+                                                @Html.ValidationMessageFor(model => model.BrandName, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
 
 
                                         <div class="form-group">
-                                            @Html.LabelFor(model => model.Diagnosis, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            @Html.LabelFor(model => model.GenericName, htmlAttributes: new { @class = "control-label col-md-2" })
                                             <div class="col-md-7">
-                                                @Html.EditorFor(model => model.Diagnosis, new { htmlAttributes = new { @class = "form-control", @required = "This is required" } })
-                                                @Html.ValidationMessageFor(model => model.Diagnosis, "", new { @class = "text-danger" })
+                                                @Html.EditorFor(model => model.GenericName, new { htmlAttributes = new { @class = "form-control", @required = "This is required" } })
+                                                @Html.ValidationMessageFor(model => model.GenericName, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            @Html.LabelFor(model => model.PrescribeDrugs, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            @Html.LabelFor(model => model.Strength, htmlAttributes: new { @class = "control-label col-md-2" })
                                             <div class="col-md-7">
-                                                @Html.EditorFor(model => model.PrescribeDrugs, new { htmlAttributes = new { @class = "form-control", @required = "This is required" } })
-                                                @Html.ValidationMessageFor(model => model.PrescribeDrugs, "You can enter multiple prescribed drugs", new { @class = "text-danger" })
+                                                @Html.EditorFor(model => model.Strength, new { htmlAttributes = new { @class = "form-control", @required = "This is required" } })
+                                                @Html.ValidationMessageFor(model => model.Strength, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-7">
+                                                @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control", @required = "This is required" } })
+                                                @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.UploadedDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-7">
+                                                @Html.EditorFor(model => model.UploadedDate, new { htmlAttributes = new { @class = "form-control", @required = "This is required" } })
+                                                @Html.ValidationMessageFor(model => model.UploadedDate, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
 
+
+                                        <div class="form-group">
                                             <div class="col-md-10">
-                                                <input class="form-control text-box single-line" id="PrescribeBy" name="PrescribeBy" type="hidden" value="@CurrentUser" />
-                                                <span class="field-validation-valid text-danger" data-valmsg-for="PrescribeBy" data-valmsg-replace="true"></span>
+                                                <input class="form-control text-box single-line" id="UploadedBy" name="UploadedBy" type="hidden" value="@CurrentUser" />
+                                                <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
                                             </div>
                                         </div>
 
-
-                                        
 
 
 
@@ -630,11 +730,11 @@
 
 
 
-                        <div>
-                            @Html.ActionLink("Back to List", "Index")
-                        </div>
-                    </div>
+                <div>
+                    @Html.ActionLink("Back to List", "Index")
                 </div>
             </div>
-      
-   
+        </div>
+    </div>
+
+

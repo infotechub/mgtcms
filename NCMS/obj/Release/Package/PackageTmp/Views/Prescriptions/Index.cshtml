@@ -180,18 +180,6 @@
                                     </div>
                                 </a>
                             </li>
-                            <li>
-                                <a href="~/Patients">
-                                    <div class="item-content">
-                                        <div class="item-media">
-                                            <i class="fa fa-bed" icon></i>
-                                        </div>
-                                        <div class="item-inner">
-                                            <span class="title"> Patients </span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
 
                             <li>
                                 <a href="~/Appointments">
@@ -214,6 +202,19 @@
                                         </div>
                                         <div class="item-inner">
                                             <span class="title"> Drug Prescription </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/RequestDrugs">
+
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-bed" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Order Drugs </span>
                                         </div>
                                     </div>
                                 </a>
@@ -402,14 +403,14 @@
                             </li>
 
                             <li>
-                                <a href="~/Appointments">
+                                <a href="~/RequestDrugs">
 
                                     <div class="item-content">
                                         <div class="item-media">
                                             <i class="fa fa-hospital-o" icon></i>
                                         </div>
                                         <div class="item-inner">
-                                            <span class="title"> Appointments </span>
+                                            <span class="title"> Dispense Drugs </span>
                                         </div>
                                     </div>
                                 </a>
@@ -421,21 +422,7 @@
                                             <i class="fa fa-medkit" icon></i>
                                         </div>
                                         <div class="item-inner">
-                                            <span class="title"> Drug Prescription </span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-
-                            <li>
-
-                                <a href="~/Schedules">
-                                    <div class="item-content">
-                                        <div class="item-media">
-                                            <i class="fa fa-calendar" icon></i>
-                                        </div>
-                                        <div class="item-inner">
-                                            <span class="title"> Doctor's Schedule </span>
+                                            <span class="title"> Drugs Inventory </span>
                                         </div>
                                     </div>
                                 </a>
@@ -537,7 +524,6 @@
                             </li>
                         </ol>
                     </div>
-                   
                 </section>
                 @if (User.Identity.IsAuthenticated)
                 {
@@ -562,11 +548,20 @@
                                                     </b>
                                                 </td>
 
-                                               
+
                                                 <td>
                                                     <b>
                                                         <font size="4">
                                                             @Html.DisplayNameFor(model => model.AppointmentId)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.FullName)
                                                         </font>
                                                     </b>
                                                 </td>
@@ -585,7 +580,15 @@
                                                         </font>
                                                     </b>
                                                 </td>
-                                               
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.DrugUsage)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
                                                 <td>
                                                     <b>
                                                         <font size="4">
@@ -611,7 +614,10 @@
                                                     <td>
                                                         @Html.DisplayFor(modelItem => item.AppointmentId)
                                                     </td>
-                                                   
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.FullName)
+                                                    </td>
+
 
                                                     <td>
                                                         @Html.DisplayFor(modelItem => item.Diagnosis)
@@ -619,7 +625,11 @@
                                                     <td>
                                                         @Html.DisplayFor(modelItem => item.PrescribeDrugs)
                                                     </td>
-                                                    
+
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.DrugUsage)
+                                                    </td>
+
 
 
                                                     <td>
@@ -629,8 +639,7 @@
 
                                                         <a href="~/Prescriptions/Edit/@item.PrescriptionId"><i class="fa fa-edit" style="font-size:28px;color:dodgerblue"></i></a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 
-                                                        <a href="~/Prescriptions/Details/@item.PrescriptionId"><i class="fa fa-eye" style="font-size:28px;color:dodgerblue"></i></a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-                                                        <a href="~/Prescriptions/Delete/@item.PrescriptionId"><i class="fa fa-trash" style="font-size:28px;color:dodgerblue">
+                                                        <a href="~/Prescriptions/Details/@item.PrescriptionId"><i class="fa fa-eye" style="font-size:28px;color:dodgerblue"></i></a>
                                                     </td>
                                                 </tr>
                                             }
@@ -661,7 +670,21 @@
                                                     </b>
                                                 </td>
 
-                                                
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.FullName)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.Diagnosis)
+                                                        </font>
+                                                    </b>
+                                                </td>
                                                 <td>
                                                     <b>
                                                         <font size="4">
@@ -669,7 +692,14 @@
                                                         </font>
                                                     </b>
                                                 </td>
-                                               
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.DrugUsage)
+                                                        </font>
+                                                    </b>
+                                                </td>
 
                                                 <td>
                                                     <b>
@@ -696,17 +726,408 @@
                                                     <td>
                                                         @Html.DisplayFor(modelItem => item.AppointmentId)
                                                     </td>
-                                                   
 
-                                                  
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.FullName)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Diagnosis)
+                                                    </td>
                                                     <td>
                                                         @Html.DisplayFor(modelItem => item.PrescribeDrugs)
                                                     </td>
-                                                    
+
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.DrugUsage)
+                                                    </td>
+
+
 
                                                     <td>
                                                         @Html.DisplayFor(modelItem => item.CreatedOn)
                                                     </td>
+                                                    <td>
+
+                                                        <a href="~/Prescriptions/Edit/@item.PrescriptionId"><i class="fa fa-edit" style="font-size:28px;color:dodgerblue"></i></a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                                                        <a href="~/Prescriptions/Details/@item.PrescriptionId"><i class="fa fa-eye" style="font-size:28px;color:dodgerblue"></i></a>
+
+                                                    </td>
+                                                </tr>
+                                            }
+
+                                        </table>
+
+                                    }
+                                    else if (User.IsInRole("DrugUpload"))
+                                    {
+
+
+
+                                        <table class="table">
+                                            <tr>
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.DrugId)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.BrandName)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.GenericName)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.Strength)
+                                                        </font>
+                                                    </b>
+                                                </td>
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.Quantity)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.RemainingDrugs)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.UploadedDate)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.Comment)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.ReviewedBy)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">Actions</font>
+                                                    </b>
+                                                </td>
+                                            </tr>
+
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.DrugId)
+                                                    </td>
+
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.BrandName)
+                                                    </td>
+
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.GenericName)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Strength)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Quantity)
+                                                    </td>
+
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.RemainingDrugs)
+                                                    </td>
+
+
+
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.UploadedDate)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Comment)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.ReviewedBy)
+                                                    </td>
+                                                    <td>
+
+                                                        <a href="~/Prescriptions/Edit/@item.PrescriptionId"><i class="fa fa-edit" style="font-size:28px;color:dodgerblue"></i></a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                                                        <a href="~/Prescriptions/Details/@item.PrescriptionId"><i class="fa fa-eye" style="font-size:28px;color:dodgerblue"></i></a>
+
+                                                    </td>
+                                                </tr>
+                                            }
+
+                                        </table>
+
+                                    }
+                                    else if (User.IsInRole("DrugUpload"))
+                                    {
+
+
+
+                                        <table class="table">
+                                            <tr>
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.DrugId)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.BrandName)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.GenericName)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.Strength)
+                                                        </font>
+                                                    </b>
+                                                </td>
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.Quantity)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.RemainingDrugs)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.UploadedDate)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.Comment)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.ReviewedBy)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">Actions</font>
+                                                    </b>
+                                                </td>
+                                            </tr>
+
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.DrugId)
+                                                    </td>
+
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.BrandName)
+                                                    </td>
+
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.GenericName)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Strength)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Quantity)
+                                                    </td>
+
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.RemainingDrugs)
+                                                    </td>
+
+
+
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.UploadedDate)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Comment)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.ReviewedBy)
+                                                    </td>
+                                                    <td>
+
+                                                        <a href="~/Prescriptions/Edit/@item.PrescriptionId"><i class="fa fa-edit" style="font-size:28px;color:dodgerblue"></i></a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                                                        <a href="~/Prescriptions/Details/@item.PrescriptionId"><i class="fa fa-eye" style="font-size:28px;color:dodgerblue"></i></a>
+
+                                                    </td>
+                                                </tr>
+                                            }
+
+                                        </table>
+
+                                    }
+                                    else if (User.IsInRole("Compliance"))
+                                    {
+
+
+
+                                        <table class="table">
+                                            <tr>
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.DrugId)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.BrandName)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.GenericName)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                               
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.Quantity)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.RemainingDrugs)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.UploadedDate)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    <b>
+                                                        <font size="4">
+                                                            @Html.DisplayNameFor(model => model.Comment)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                              
+                                                <td>
+                                                    <b>
+                                                        <font size="4">Actions</font>
+                                                    </b>
+                                                </td>
+                                            </tr>
+
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.DrugId)
+                                                    </td>
+
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.BrandName)
+                                                    </td>
+
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.GenericName)
+                                                    </td>
+                                                   
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Quantity)
+                                                    </td>
+
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.RemainingDrugs)
+                                                    </td>
+
+
+
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.UploadedDate)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Comment)
+                                                    </td>
+                                                   
                                                     <td>
 
                                                         <a href="~/Prescriptions/Edit/@item.PrescriptionId"><i class="fa fa-edit" style="font-size:28px;color:dodgerblue"></i></a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;

@@ -212,6 +212,19 @@
                                 </a>
                             </li>
                             <li>
+                                <a href="~/RequestDrugs">
+
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-bed" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Order Drugs </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="~/Prescriptions">
                                     <div class="item-content">
                                         <div class="item-media">
@@ -277,6 +290,19 @@
                                         </div>
                                         <div class="item-inner">
                                             <span class="title"> Appointments </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/History">
+
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-bed" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Patients History </span>
                                         </div>
                                     </div>
                                 </a>
@@ -652,9 +678,8 @@
                                             @Html.DisplayFor(modelItem => item.DateCreated)
                                         </td>
                                         <td>
-                                            <a href="~/Timesheet/Edit/@item.Id"><i class="fa fa-sign-out" style="font-size:28px;color:dodgerblue"></i></a> 
+                                            <button type="submit" class='btn btn-primary'><i class="fa fa-plus fa-lg"><a href="~/Timesheet/Edit/@item.Id"><font color="white"> Clock Out</font></a></i></button>
 
-                                           
                                         </td>
                                     </tr>
                                 }

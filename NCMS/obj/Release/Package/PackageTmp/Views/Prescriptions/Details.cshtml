@@ -187,18 +187,7 @@
                                     </div>
                                 </a>
                             </li>
-                            <li>
-                                <a href="~/Patients">
-                                    <div class="item-content">
-                                        <div class="item-media">
-                                            <i class="fa fa-bed" icon></i>
-                                        </div>
-                                        <div class="item-inner">
-                                            <span class="title"> Patients </span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
+
                             <li>
                                 <a href="~/Appointments">
 
@@ -279,6 +268,19 @@
                                         </div>
                                         <div class="item-inner">
                                             <span class="title"> Appointments </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/History">
+
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-bed" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Patients History </span>
                                         </div>
                                     </div>
                                 </a>
@@ -574,7 +576,7 @@
                                                     @Html.DisplayFor(model => model.AppointmentId)
                                                 </td>
                                             </tr>
-                                         
+
 
                                             <tr>
 
@@ -704,7 +706,7 @@
                                 <div class="col-md-6">
                                     <div class="table-responsive">
                                         <table class="table">
-                                            
+
                                             <tr>
                                                 <td>
 
@@ -883,6 +885,165 @@
                                                 </td>
                                             </tr>
 
+
+
+
+                                        </table>
+                                    </div>
+                                </div>
+                            }
+                            else if (User.IsInRole("DrugUpload") || User.IsInRole("Compliance"))
+                            {
+                                <div class="col-md-6">
+                                    <div class="table-responsive">
+                                        <table class="table">
+
+                                            <tr>
+                                                <td>
+
+
+                                                    <b>
+                                                        <font size="3">
+                                                            @Html.DisplayNameFor(model => model.DrugId)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    @Html.DisplayFor(model => model.DrugId)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+
+
+                                                    <b>
+                                                        <font size="3">
+                                                            @Html.DisplayNameFor(model => model.BrandName)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    @Html.DisplayFor(model => model.BrandName)
+                                                </td>
+                                            </tr>
+                                            <tr>
+
+                                                <td>
+
+
+                                                    <b>
+                                                        <font size="3">
+                                                            @Html.DisplayNameFor(model => model.GenericName)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    @Html.DisplayFor(model => model.GenericName)
+                                                </td>
+                                            </tr>
+                                            <tr>
+
+                                                <td>
+
+
+                                                    <b>
+                                                        <font size="3">
+                                                            @Html.DisplayNameFor(model => model.Strength)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    @Html.DisplayFor(model => model.Strength)
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+
+                                                <td>
+
+
+                                                    <b>
+                                                        <font size="3">
+                                                            @Html.DisplayNameFor(model => model.Quantity)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    @Html.DisplayFor(model => model.Quantity)
+                                                </td>
+                                            </tr>
+                                            <tr>
+
+                                                <td>
+
+
+                                                    <b>
+                                                        <font size="3">
+                                                            @Html.DisplayNameFor(model => model.RemainingDrugs)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    @Html.DisplayFor(model => model.RemainingDrugs)
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+
+                                                <td>
+
+
+                                                    <b>
+                                                        <font size="3">
+                                                            @Html.DisplayNameFor(model => model.UploadedDate)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    @Html.DisplayFor(model => model.UploadedDate)
+                                                </td>
+                                            </tr>
+                                            <tr>
+
+                                                <td>
+
+
+                                                    <b>
+                                                        <font size="3">
+                                                            @Html.DisplayNameFor(model => model.Comment)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    @Html.DisplayFor(model => model.Comment)
+                                                </td>
+                                            </tr>
+                                            <tr>
+
+                                                <td>
+
+
+                                                    <b>
+                                                        <font size="3">
+                                                            @Html.DisplayNameFor(model => model.ReviewedBy)
+                                                        </font>
+                                                    </b>
+                                                </td>
+
+                                                <td>
+                                                    @Html.DisplayFor(model => model.ReviewedBy)
+                                                </td>
+                                            </tr>
+
+                                          
 
 
 

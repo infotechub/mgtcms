@@ -283,6 +283,19 @@
                                 </a>
                             </li>
                             <li>
+                                <a href="~/History">
+
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="fa fa-bed" icon></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Patients History </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="~/Prescriptions">
                                     <div class="item-content">
                                         <div class="item-media">
@@ -562,14 +575,7 @@
                                                     </font>
                                                     <hr />
                                                
-                                                <tr>
-                                                    <td>
-                                                        <b> <font size="3">     @Html.DisplayNameFor(model => model.Patient.Dob) </font></b>
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(model => model.Patient.Dob)
-                                                    </td>
-                                                </tr>
+                                                
                                                 <tr>
                                                     <td>
                                                         <b> <font size="3">     @Html.DisplayNameFor(model => model.Status) </font></b>
@@ -640,7 +646,7 @@
                                                             Html.DisplayFor(model => model.BloodPresure);
                                                             var BP = Model.BloodPresure;
                                                         }
-                                                        @if (BP < 130.80)
+                                                        @if (BP < 130.80 && BP > 90.60)
                                                         {
                                                             <p style='font-size: 12pt; font-family: arial; font-weight: bold; background-color:green; color:white'>
                                                                 @BP.ToString("000.00")
@@ -773,12 +779,7 @@
                                                         APPOINTMENT DETAILS
                                                     </font>
                                                     <hr />
-                                                    <td>
-                                                        <b> <font size="3">        @Html.DisplayNameFor(model => model.DischargedDate) </font></b>
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(model => model.DischargedDate)
-                                                    </td>
+                                                   
                                                 </tr>
 
                                                 <tr>
@@ -836,24 +837,19 @@
                                 }
                                 else if (User.IsInRole("Front Desk") || User.IsInRole("Patient"))
                                 {
-                                    <div class="col-md-6">
+                                   
+
+                                    <div class="col-md-10">
                                         <div class="table-responsive">
-                                            <table class="table">
-
-                                                <tr>
-
-                                                    <font size="5">
-                                                        PERSONAL DATA
-                                                    </font>
-                                                    <hr />
-                                                    <td>
+                                            <table class="table"><tr>
+                                                <td>
 
 
-                                                        <b> <font size="3">  @Html.DisplayNameFor(model => model.Id) </font></b>
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(model => model.Id)
-                                                    </td>
+                                                    <b> <font size="3">  @Html.DisplayNameFor(model => model.Id) </font></b>
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(model => model.Id)
+                                                </td>
                                                 </tr>
                                                 <tr>
                                                     <td>
@@ -863,42 +859,7 @@
                                                         @Html.DisplayFor(model => model.PatientId)
                                                     </td>
                                                 </tr>
-                                              
-                                                <tr>
-                                                    <td>
-                                                        <b> <font size="3">     @Html.DisplayNameFor(model => model.Patient.Dob) </font></b>
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(model => model.Patient.Dob)
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <b> <font size="3">   @Html.DisplayNameFor(model => model.Occupation) </font></b>
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(model => model.Occupation)
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="table-responsive">
-                                            <table class="table">
-                                                <tr>
-                                                    <font size="5">
-                                                        APPOINTMENT DETAILS
-                                                    </font>
-                                                    <hr />
-                                                    <td>
-                                                        <b> <font size="3">        @Html.DisplayNameFor(model => model.DischargedDate) </font></b>
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(model => model.DischargedDate)
-                                                    </td>
-                                                </tr>
+                                               
                                                 <tr>
                                                     <td>
                                                         <b> <font size="3">@Html.DisplayNameFor(model => model.Status) </font></b>

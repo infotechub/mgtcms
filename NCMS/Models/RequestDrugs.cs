@@ -10,7 +10,7 @@ namespace NCMS.Models
     public class RequestDrugs
     {
         [Key]
-        [DisplayName("Request ID")]
+        [DisplayName("ID")]
         public int RequestID { get; set; }
         [DisplayName("Brand Name")]
         public string BrandName { get; set; }
@@ -18,11 +18,11 @@ namespace NCMS.Models
         public string GenericName { get; set; }
         [DisplayName("Quantity")]
         public double QuantityReq { get; set; }
-        [DisplayName("Quantity Dispensed")]
+        [DisplayName("Qty Dispensed")]
         public double DispensedQuantity { get; set; }
         [DisplayName("Remark")]
         public string Description { get; set; }
-        [DisplayName("Request Made By")]
+        [DisplayName("Requested By")]
         public string RequestBy { get; set; }
         [DisplayName("Dispensed By")]
         public string DispensedBy { get; set; }

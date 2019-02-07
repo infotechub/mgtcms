@@ -80,8 +80,7 @@ namespace NCMS.Models
     
 
 
-        public int PatientId { get; set; }
-        public Patient Patient { get; set; }
+       
 
         public virtual ICollection<Pharmacist> Pharmacists { get; set; }
     }

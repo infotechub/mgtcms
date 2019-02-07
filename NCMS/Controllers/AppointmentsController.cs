@@ -69,7 +69,7 @@ namespace NCMS.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.PatientId = new SelectList(db.Patients, "PatientId", "FullName", appointment.PatientId);
+            ViewBag.PatientId = new SelectList(db.Patients, "PatientId", "FullName", appointment.Id);
             return View(appointment);
         }
 
@@ -85,7 +85,7 @@ namespace NCMS.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.PatientId = new SelectList(db.Patients, "PatientId", "FullName", appointment.PatientId);
+            ViewBag.PatientId = new SelectList(db.Patients, "PatientId", "FullName", appointment.Id);
             return View(appointment);
         }
 
@@ -102,7 +102,7 @@ namespace NCMS.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.PatientId = new SelectList(db.Patients, "PatientId", "FullName", appointment.PatientId);
+            ViewBag.PatientId = new SelectList(db.Patients, "PatientId", "FullName", appointment.Id);
             return View(appointment);
         }
 
